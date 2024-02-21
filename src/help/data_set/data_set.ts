@@ -9,13 +9,13 @@ export function data_set(data: any, key: string, value: any) {
     const keys = key.split(".");
     const firstKey = keys.shift();
     if (!firstKey) return;
-  
+
     if (!(firstKey in data))
-      data[firstKey] = {};
-  
+        data[firstKey] = {};
+
     if (keys.length < 1) {
-      data[firstKey] = value;
-      return
+        data[firstKey] = value;
+        return
     }
     data_set(data[firstKey], keys.join("."), value);
-  }
+}
