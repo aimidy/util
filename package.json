@@ -13,6 +13,10 @@
     "test": "jest",
     "push": "npm publish --access=public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aimidy/util.get"
+  },
   "keywords": [
     "demo",
     "typescript",
