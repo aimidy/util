@@ -43,3 +43,18 @@ test("help.deepAssign 測試", () => {
         }
     });
 });
+
+
+test("help.deepAssign undefined 測試", () => {
+
+    const obj1 = undefined
+    const obj2 = {
+        b: 3,
+        c: 1,
+
+    }
+    expect(deepAssign(obj1, obj2)).toStrictEqual({
+        b: 3,
+        c: 1,
+    });
+});

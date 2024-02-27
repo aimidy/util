@@ -6,10 +6,13 @@ import { gettype } from "../gettype/gettype";
  * @param sources
  * @returns
  */
-export function deepAssign(...param: { [_: string]: any }[]) {
-    let result = Object.assign({}, ...param);
+export function deepAssign(...param: ({ [_: string]: any } | undefined)[]) {
+    let temp: any[] = param.filter(v => gettype(v) === "object")
+    if (temp.length < 1) return {};
+    
+    let result = Object.assign({}, ...temp);
 
-    for (let item of param) {
+    for (let item of temp) {
         for (const [idx, val] of Object.entries<any>(item)) {
             if (gettype(val) === "object") {
                 result[idx] = deepAssign(result[idx], val);
