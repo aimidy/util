@@ -1,1 +1,3 @@
-export * as help from './help';
+import * as help from './help';
+
+export { help }

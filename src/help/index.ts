@@ -6,3 +6,8 @@ export * from './gettype/gettype';
 export * from './parameterMerge/parameterMerge';
 export * from './head/head';
 export * from './deepCloneWithJson/deepCloneWithJson';
+export * from './remove/remove';
+export * from './searchInStr/searchInStr';
+export * from './strToConvert/strToConvert';
+export * from './strToHump/strToHump';
+export * from './deepAssign/deepAssign';
