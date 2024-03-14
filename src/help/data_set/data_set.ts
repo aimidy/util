@@ -8,14 +8,13 @@
 export function data_set(data: any, key: string, value: any) {
     const keys = key.split(".");
     const firstKey = keys.shift();
-    if (!firstKey) return;
-
-    if (!(firstKey in data))
-        data[firstKey] = {};
+    if (!firstKey) return data;
 
     if (keys.length < 1) {
         data[firstKey] = value;
-        return
+        return data;
     }
-    data_set(data[firstKey], keys.join("."), value);
+
+    data[firstKey] = data_set({}, keys.join("."), value);
+    return data;
 }
