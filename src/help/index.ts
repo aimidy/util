@@ -12,3 +12,4 @@ export * from './strToConvert/strToConvert';
 export * from './strToHump/strToHump';
 export * from './deepAssign/deepAssign';
 export * from './fieldSorter/fieldSorter';
+export * from "./range/range";
