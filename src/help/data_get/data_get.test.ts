@@ -29,3 +29,14 @@ test("help.data_get object 測試 1", () => {
     }
     expect(data_get(array, "c.d")).toStrictEqual([1, 2, 3, 4]);
 });
+
+test("help.data_get object 測試 複合式key", () => {
+    const array = {
+        a: 1,
+        b: 2,
+        'c.d': {
+            'd.f': [1, 2, 3, 4]
+        }
+    }
+    expect(data_get(array, "c.d.d.f")).toStrictEqual([1, 2, 3, 4]);
+});
