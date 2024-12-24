@@ -40,3 +40,16 @@ test("help.data_get object 測試 複合式key", () => {
     }
     expect(data_get(array, "c.d.d.f")).toStrictEqual([1, 2, 3, 4]);
 });
+
+
+test("help.data_get object 測試 相似key", () => {
+    const array = {
+        app: {
+            status: 1,
+            status2: 2,
+            'status.a': 3
+        },
+    }
+
+    expect(data_get(array, "app.status.a")).toBe(3);
+});

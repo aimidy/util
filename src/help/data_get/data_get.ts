@@ -13,14 +13,17 @@ import { deepCloneWithJson, gettype } from "..";
 export function data_get<T = any>(data: { [key: string]: any } | any[] | null | undefined, key: string, defaultValue: any = null,): T {
     switch (gettype(data)) {
         case "object":
-            const coypData = deepCloneWithJson(data);
-            const findKey = Object.keys(coypData).find((k) => key.startsWith(k));
-            if (!findKey) return defaultValue;
+            const copyData = deepCloneWithJson(data);
+            const findKeys = Object.keys(copyData).filter((k) => key.startsWith(k));
+            if (findKeys.length < 1) return defaultValue;
+
+            const findKey = findKeys.length === 1 ? findKeys[0] : findOnlyKey(findKeys, key);
+            if (findKey === null) return defaultValue;
 
             key = findKey === key ? '' : key.replace(findKey + '.', '');
-            if (key === '') return coypData[findKey];
+            if (key === '') return copyData[findKey];
 
-            return data_get(coypData[findKey], key, defaultValue);
+            return data_get(copyData[findKey], key, defaultValue);
 
         case 'undefined':
         case 'null':
@@ -30,4 +33,18 @@ export function data_get<T = any>(data: { [key: string]: any } | any[] | null | 
         default:
             return data as any;
     }
+}
+
+/**
+ * 當有多個key時，找出唯一的key
+ * @param objKeys 
+ * @param key 
+ * @returns 
+ */
+function findOnlyKey(objKeys: string[], key: string): string | null {
+    const keys = key.split('.');
+    return objKeys.find(objKey => {
+        const keyParts = objKey.split('.');
+        return keys.every((k, index) => k === keyParts[index] || keyParts[index] === keys.slice(0, index + 1).join('.'));
+    }) || null;
 }
