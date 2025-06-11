@@ -1,6 +1,6 @@
 {
   "name": "@aimidy/util",
-  "version": "1.0.14",
+  "version": "1.1.0",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -18,7 +18,7 @@
     "url": "https://github.com/aimidy/util"
   },
   "keywords": [
-    "demo",
+    "util",
     "typescript",
     "npm"
   ],
@@ -27,9 +27,9 @@
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "jest": "^29.7.0",
-    "ts-jest": "^29.2.5",
+    "ts-jest": "^29.3.4",
     "ts-node": "^10.9.2",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.2"
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   }
 }
