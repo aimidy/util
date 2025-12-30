@@ -103,11 +103,11 @@ parameterMerge({ a: 1 }, { b: 2 }); // { a: 1, b: 2 }
 
 #### `convertCase(input, to)`
 
-將字串在不同命名風格間轉換。
+將字串在不同命名風格間轉換，支持混合命名風格的拆解（如連續大寫字母、數字等）。
 
 **參數：**
 
-- `input`: 輸入字串
+- `input`: 輸入字串（支持 PascalCase、camelCase、snake_case、kebab-case、混雜風格）
 - `to`: 目標格式 (`'pascal'` | `'camel'` | `'snake'` | `'kebab'`)
 
 **範例：**
@@ -116,6 +116,24 @@ parameterMerge({ a: 1 }, { b: 2 }); // { a: 1, b: 2 }
 convertCase('user_name', 'camel'); // 'userName'
 convertCase('UserName', 'snake'); // 'user_name'
 convertCase('user-name', 'pascal'); // 'UserName'
+convertCase('JSONDataAPI', 'camel'); // 'jsonDataApi'
+convertCase('API2Version', 'snake'); // 'api_2_version'
+```
+
+#### `convertAllCases(input)`
+
+一次轉換字串成所有四種命名風格。
+
+**範例：**
+
+```typescript
+convertAllCases('user_name');
+// {
+//   pascal: 'UserName',
+//   camel: 'userName',
+//   snake: 'user_name',
+//   kebab: 'user-name'
+// }
 ```
 
 #### `strToHump(str)`
