@@ -5,6 +5,6 @@ test("help.searchInStr 測試", () => {
 });
 
 
-test("help.searchInStr 測試", () => {
+test("help.searchInStr 找不到字符測試", () => {
     expect(searchInStr('abcd', 'e')).toStrictEqual([false, 'abcd']);
 });
