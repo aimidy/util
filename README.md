@@ -181,21 +181,21 @@ remove([1, 2, 3, 2], 2); // [1, 3, 2]
 
 - `sort.isDesc`: 是否降冪排序
 - `sort.fields`: 欄位設定陣列
-    - `key`: 欄位名稱
-    - `isNumber`: 是否為數字
-    - `isDesc`: 該欄位是否降冪
+  - `key`: 欄位名稱
+  - `isNumber`: 是否為數字
+  - `isDesc`: 該欄位是否降冪
 
 **範例：**
 
 ```typescript
 const data = [
-    { name: 'John', age: 30 },
-    { name: 'Jane', age: 25 },
+  { name: 'John', age: 30 },
+  { name: 'Jane', age: 25 },
 ];
 data.sort(
-    fieldSorter({
-        fields: [{ key: 'age', isNumber: true, isDesc: true }],
-    }),
+  fieldSorter({
+    fields: [{ key: 'age', isNumber: true, isDesc: true }],
+  }),
 );
 ```
 
