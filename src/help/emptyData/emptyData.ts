@@ -4,14 +4,21 @@
  * @returns
  */
 export function emptyData(data: any) {
-    const isEmpty: Record<string, () => boolean> = {
-        undefined: () => true,
-        null: () => true,
-        string: () => data === '',
-        array: () => data.length === 0,
-        object: () => Object.keys(data).length === 0,
-    };
+    if (data === undefined || data === null) {
+        return true;
+    }
 
-    const type = Array.isArray(data) ? 'array' : typeof data;
-    return isEmpty[type]?.() ?? false;
+    if (typeof data === 'string') {
+        return data === '';
+    }
+
+    if (Array.isArray(data)) {
+        return data.length === 0;
+    }
+
+    if (typeof data === 'object') {
+        return Object.keys(data).length === 0;
+    }
+
+    return false;
 }
