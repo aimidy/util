@@ -20,7 +20,13 @@
   "keywords": [
     "util",
     "typescript",
-    "npm"
+    "npm",
+    "library",
+    "tool",
+    "helper",
+    "aimidy",
+    "front-end",
+    "backend"
   ],
   "author": "aimidy",
   "license": "ISC",
