@@ -14,3 +14,4 @@ export * from './deepAssign/deepAssign';
 export * from './fieldSorter/fieldSorter';
 export * from './range/range';
 export * from './convertCase/convertCase';
+export * from './replacePathParams/replacePathParams';

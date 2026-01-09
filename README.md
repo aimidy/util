@@ -163,6 +163,46 @@ strToConvert('userName'); // 'user_name'
 strToConvert('userName', '-'); // 'user-name'
 ```
 
+#### `replacePathParams(str, data, prefix?)`
+
+替換路徑中的參數佔位符，支持自定義前綴。
+
+**參數：**
+
+- `str`: 路徑字串
+- `data`: 參數物件
+- `prefix`: 佔位符前綴 (預設為 `':'`)，支持 `'{}'`、`'$'`、`'#'`、`'@'` 等
+
+**範例：**
+
+```typescript
+// 預設使用 : 前綴
+replacePathParams('/abc/:id', { id: '1' }); // '/abc/1'
+replacePathParams('/user/:userId/post/:postId', { userId: '123', postId: '456' }); 
+// '/user/123/post/456'
+
+// 使用 {} 包裹語法
+replacePathParams('/abc/{id}', { id: '1' }, '{}'); // '/abc/1'
+replacePathParams('/user/{userId}/post/{postId}', { userId: '123', postId: '456' }, '{}');
+// '/user/123/post/456'
+
+// 使用 $ 前綴
+replacePathParams('/abc/$id', { id: '1' }, '$'); // '/abc/1'
+
+// 使用 # 前綴
+replacePathParams('/page/#pageNum', { pageNum: '5' }, '#'); // '/page/5'
+
+// 使用 @ 前綴
+replacePathParams('/user/@username', { username: 'john' }, '@'); // '/user/john'
+
+// 參數不存在時保留原樣
+replacePathParams('/abc/:id/:name', { id: '1' }); // '/abc/1/:name'
+
+// 混合前綴不會互相干擾
+replacePathParams('/api/:version/user/{id}', { version: 'v1', id: '123' }, ':');
+// '/api/v1/user/{id}'
+```
+
 ### 📋 陣列操作
 
 #### `head<T>(arr)`
